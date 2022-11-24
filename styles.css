@@ -1,6 +1,14 @@
 /* fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+/* colors */
+:root {
+  --background: #ff7979;
+  --text: white;
+  --trialBox: #5e54a4;
+  --formFocus: #3d3b48;
+  --callToAction: #38cc8b;
+}
 /* general */
 html {
   box-sizing: border-box;
@@ -15,25 +23,57 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  max-width: 375px;
-  margin: 0 auto;
-}
 
+  background-image: url('./images/bg-intro-mobile.png'),
+    linear-gradient(var(--background), var(--background));
+}
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
+/* header */
 h1,
 p {
   text-align: center;
+  color: var(--text);
+}
+h1 {
+  margin-top: 5.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+}
+header > p {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.625rem;
+  margin-bottom: 4rem;
+}
+.trial-info-container {
+  width: 100%;
+  background-color: var(--trialBox);
+  border-radius: 10px;
+  box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.14688);
+}
+.trial-info-container p {
+  padding: 1.125rem 4.1875rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
 }
 
 /* form */
 .form {
   width: 100%;
-  padding: 2rem;
-  border: 1px solid black;
+  padding: 1.5rem;
+  background: #ffffff;
+  box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.14688);
+  border-radius: 10px;
+  margin-bottom: 4.25rem;
 }
 form input {
   width: 100%;
@@ -46,11 +86,10 @@ form input {
   font-weight: 600;
   font-size: 0.875rem;
   color: #3d3b48;
-  /* opacity: 0.75; */
 }
 form input:focus {
   outline: none;
-  border: 2px solid blue;
+  border: 1px solid var(--trialBox);
 }
 
 .input-container {
@@ -74,12 +113,20 @@ form input:focus {
 }
 
 form input[type='submit'] {
-  background-color: green;
+  background-color: var(--callToAction);
   color: white;
   text-indent: 0;
+  box-shadow: inset 0px -4px 0px rgba(0, 0, 0, 0.0908818);
+  border-radius: 5px;
+  border: none;
+  padding: 15px 2.75rem;
 }
 form input[type='submit']:hover {
-  background-color: darkgreen;
+  background-color: #77e2b3;
+}
+form input[type='submit']:active {
+  background-color: #77e2b3;
+  box-shadow: none;
 }
 
 .terms-and-cons {
@@ -91,6 +138,10 @@ form input[type='submit']:hover {
   color: #bab7d4;
   margin: 0 auto;
 }
+.terms-and-cons > a {
+  text-decoration: none;
+  color: var(--background);
+}
 
 /* form toggle styles */
 .err-border {
@@ -100,4 +151,22 @@ form input[type='submit']:hover {
 .hidden {
   display: none;
   visibility: hidden;
+}
+
+@media (min-width: 800px) {
+  main {
+    max-width: 1000px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 2.8125rem;
+  }
+  header {
+    flex-basis: 48%;
+  }
+  form {
+    margin-bottom: 0;
+    flex-basis: 48%;
+  }
 }
