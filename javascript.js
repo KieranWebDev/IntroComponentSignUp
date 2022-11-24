@@ -1,3 +1,4 @@
+// form selectors
 const form = document.querySelector('form');
 const inputs = document.querySelectorAll('.input');
 const errorIcon = document.querySelectorAll('.err-icon');
@@ -11,32 +12,23 @@ const lastName = document.querySelector('#last-name');
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 
-// const inputContainer = document.querySelectorAll('.input-container');
-
-// const firstName = document.querySelector('#first-name');
-
-// const errBorder = document.querySelectorAll('.err-border');
-
-// console.log(inputContainer);
-// console.log(span);
-// console.log(successMessage);
-
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  console.log('value ' + typeof inputs[0].value);
-
+  // checks to ensure form inputs are valid before submitting
   let correctInputCount = 0;
-  //   console.log(firstName.value);
-  //   console.log(span[0].textContent);
+  let correctEmail = false;
+
+  // regex to confirm email is valid
+  const emailRegex = /.+@.+\..+/;
 
   for (let i = 0; i < inputs.length; i++) {
-    console.log(inputs[i].value);
-
+    // if input is an empty string
     if (inputs[i].value === '') {
       errorIcon[i].classList.remove('hidden');
       inputs[i].classList.add('err-border');
-      span[i].classList.remove('hidden');
+      span[i].textContent = `${inputs[i].placeholder} cannot be empty`;
+      // if input is not an empty string
     } else if (inputs[i].value !== '') {
       span[i].classList.remove('hidden');
       span[i].textContent = 'niceee ✅';
@@ -47,11 +39,27 @@ form.addEventListener('submit', (e) => {
       correctInputCount++;
     }
   }
-  console.log(correctInputCount);
 
-  if (correctInputCount === 4) {
+  // if email is not vailid
+  if (!emailRegex.test(email.value)) {
+    console.log('not valid email');
+    span[2].classList.remove('hidden');
+    span[2].textContent = 'Looks like this is not an email';
+    span[2].style.color = 'red';
+    inputs[2].style.border = '2px solid red';
+    errorIcon[2].classList.remove('hidden');
+    email.classList.add('err-border');
+    email.textContent = email.value;
+    // if email is valid
+  } else if (emailRegex.test(email.value)) {
+    correctEmail = true;
+  }
+
+  if (correctInputCount === 4 && correctEmail === true) {
     successMessage.textContent = `success! Enjoy your free trial ${firstName.value}`;
     form.classList.add('hidden');
+
+    // prints object with form values to console.log
     const submittedValues = {
       firstName: firstName.value,
       lastName: lastName.value,
