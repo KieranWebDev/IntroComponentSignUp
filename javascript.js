@@ -64,6 +64,7 @@ function checkFormSubmission(e) {
     // if email is valid
   } else if (emailRegex.test(email.value)) {
     correctEmail = true;
+    inputs[2].style.color = '#3d3b48';
   }
 
   if (correctInputCount === 4 && correctEmail === true) {
