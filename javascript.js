@@ -32,7 +32,7 @@ function checkFormSubmission(e) {
   const emailRegex = /.+@.+\..+/;
 
   for (let i = 0; i < inputs.length; i++) {
-    // if input is an empty string
+    //checks if any inputs are empty strings
     if (inputs[i].value === '') {
       errorIcon[i].classList.remove('hidden');
       inputs[i].classList.add('err-border');
@@ -50,7 +50,7 @@ function checkFormSubmission(e) {
     }
   }
 
-  // if email is not vailid
+  // checks if email is valid
   if (!emailRegex.test(email.value)) {
     console.log('not valid email');
     span[2].classList.remove('hidden');
@@ -67,6 +67,7 @@ function checkFormSubmission(e) {
     inputs[2].style.color = '#3d3b48';
   }
 
+  // checks if all input fields are valid and displays success message
   if (correctInputCount === 4 && correctEmail === true) {
     successMessage.textContent = ` ${capitalizeFirstLetter(
       firstName.value
