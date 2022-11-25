@@ -4,8 +4,12 @@ const inputs = document.querySelectorAll('.input');
 const errorIcon = document.querySelectorAll('.err-icon');
 const span = document.querySelectorAll('.err-msg');
 
+// success form submission message selectors
+const successMessageContainer = document.querySelector(
+  '.success-message-container'
+);
 const successMessage = document.querySelector('.successMsg');
-
+const trialInfoContainer = document.querySelector('.trial-info-container');
 // form values
 const firstName = document.querySelector('#first-name');
 const lastName = document.querySelector('#last-name');
@@ -55,13 +59,20 @@ form.addEventListener('submit', (e) => {
     correctEmail = true;
   }
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   if (correctInputCount === 4 && correctEmail === true) {
-    successMessage.textContent = `success! Enjoy your free trial ${firstName.value}`;
+    successMessage.textContent = ` ${capitalizeFirstLetter(
+      firstName.value
+    )},you can know claim your free trial!`;
+    successMessageContainer.classList.remove('hidden');
     form.classList.add('hidden');
 
     // prints object with form values to console.log
     const submittedValues = {
-      firstName: firstName.value,
+      firstName: capitalizeFirstLetter(firstName.value),
       lastName: lastName.value,
       email: email.value,
       password: password.value,

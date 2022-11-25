@@ -54,13 +54,15 @@ header > p {
   line-height: 1.625rem;
   margin-bottom: 4rem;
 }
-.trial-info-container {
+.trial-info-container,
+.success-message-container {
   width: 100%;
   background-color: var(--trialBox);
   border-radius: 10px;
   box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.14688);
 }
-.trial-info-container p {
+.trial-info-container p,
+.successMsg {
   padding: 1.125rem 4.1875rem;
   font-weight: 400;
   margin-bottom: 1.5rem;
@@ -112,7 +114,8 @@ form input:focus {
   color: red;
 }
 
-form input[type='submit'] {
+form input[type='submit'],
+.link-to-site {
   background-color: var(--callToAction);
   color: white;
   text-indent: 0;
@@ -121,10 +124,13 @@ form input[type='submit'] {
   border: none;
   padding: 0.9375rem 2.75rem;
 }
-form input[type='submit']:hover {
+form input[type='submit']:hover,
+.link-to-site:hover {
   background-color: #77e2b3;
+  cursor: pointer;
 }
-form input[type='submit']:active {
+form input[type='submit']:active,
+.link-to-site:active {
   background-color: #77e2b3;
   box-shadow: none;
 }
@@ -153,7 +159,37 @@ form input[type='submit']:active {
   visibility: hidden;
 }
 
+/* form submitted modal */
+.success-message-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  top: 20%;
+}
+.success-message-container h2 {
+  color: var(--text);
+  font-size: 4rem;
+}
+.success-message-container p {
+  font-size: 1.5rem;
+}
+.success-message-container .link-to-site {
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+.flex-right-container {
+  position: relative;
+}
+
 @media (min-width: 800px) {
+  body {
+    background-image: url('./images/bg-intro-desktop.png'),
+      linear-gradient(var(--background), var(--background));
+  }
+
   main {
     max-width: 1440px;
     flex-direction: row;
@@ -167,6 +203,8 @@ form input[type='submit']:active {
   }
   form {
     margin-bottom: 0;
+  }
+  .flex-right-container {
     flex-basis: 540px;
   }
   h1 {
