@@ -57,7 +57,6 @@ function checkFormSubmission(e) {
     span[2].textContent = 'Looks like this is not an email';
     span[2].style.color = 'red';
     inputs[2].style.border = '2px solid red';
-    inputs[2].style.color = 'red';
     errorIcon[2].classList.remove('hidden');
     email.classList.add('err-border');
     email.textContent = email.value;
