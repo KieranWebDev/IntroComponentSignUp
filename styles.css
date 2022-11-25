@@ -198,8 +198,9 @@ form input[type='submit']:active,
   header {
     flex-basis: 525px;
   }
-  form {
+  .form {
     margin-bottom: 0;
+    padding: 2.5rem;
   }
   .flex-right-container {
     flex-basis: 540px;
