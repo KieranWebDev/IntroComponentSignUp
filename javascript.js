@@ -16,7 +16,12 @@ const lastName = document.querySelector('#last-name');
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 
-form.addEventListener('submit', (e) => {
+// function to capitalize form value names
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function checkFormSubmission(e) {
   e.preventDefault();
 
   // checks to ensure form inputs are valid before submitting
@@ -36,10 +41,11 @@ form.addEventListener('submit', (e) => {
     } else if (inputs[i].value !== '') {
       span[i].classList.remove('hidden');
       span[i].textContent = 'niceee ✅';
-      span[i].style.color = 'green';
+      span[i].style.color = '#38cc8b';
       errorIcon[i].classList.add('hidden');
       inputs[i].classList.remove('err-border');
-      inputs[i].style.border = '2px solid green';
+      inputs[i].style.border = '2px solid #38cc8b';
+
       correctInputCount++;
     }
   }
@@ -51,6 +57,7 @@ form.addEventListener('submit', (e) => {
     span[2].textContent = 'Looks like this is not an email';
     span[2].style.color = 'red';
     inputs[2].style.border = '2px solid red';
+    inputs[2].style.color = 'red';
     errorIcon[2].classList.remove('hidden');
     email.classList.add('err-border');
     email.textContent = email.value;
@@ -59,24 +66,23 @@ form.addEventListener('submit', (e) => {
     correctEmail = true;
   }
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
   if (correctInputCount === 4 && correctEmail === true) {
     successMessage.textContent = ` ${capitalizeFirstLetter(
       firstName.value
-    )},you can know claim your free trial!`;
+    )}, you can know claim your free trial!`;
     successMessageContainer.classList.remove('hidden');
     form.classList.add('hidden');
+    trialInfoContainer.classList.add('hidden');
 
     // prints object with form values to console.log
     const submittedValues = {
       firstName: capitalizeFirstLetter(firstName.value),
-      lastName: lastName.value,
+      lastName: capitalizeFirstLetter(lastName.value),
       email: email.value,
       password: password.value,
     };
     console.log(submittedValues);
   }
-});
+}
+
+form.addEventListener('submit', checkFormSubmission);

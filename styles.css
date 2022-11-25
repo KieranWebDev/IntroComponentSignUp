@@ -161,30 +161,28 @@ form input[type='submit']:active,
 
 /* form submitted modal */
 .success-message-container {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 350px;
-  top: 20%;
+  text-align: center;
+  /* min-height: 300px; */
+  padding: 1.5rem;
+  margin-bottom: 4rem;
 }
 .success-message-container h2 {
   color: var(--text);
-  font-size: 4rem;
+  font-size: 3rem;
 }
-.success-message-container p {
-  font-size: 1.5rem;
+.success-message-container > p {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
 }
 .success-message-container .link-to-site {
+  display: block;
   text-decoration: none;
-  font-size: 1.5rem;
-}
-.flex-right-container {
-  position: relative;
+  font-size: 1rem;
+  width: 70%;
+  margin: 0 auto;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   body {
     background-image: url('./images/bg-intro-desktop.png'),
       linear-gradient(var(--background), var(--background));
@@ -221,10 +219,21 @@ form input[type='submit']:active,
   .trial-info-container p {
     padding: 1.125rem 0.5rem;
   }
-}
-
-@media (min-width: 1000px) {
-  main {
-    padding: 0;
+  /* form submission */
+  .success-message-container {
+    text-align: center;
+    min-height: 350px;
+    padding: 1.5rem;
+  }
+  .success-message-container h2 {
+    color: var(--text);
+    font-size: 4rem;
+  }
+  .success-message-container p {
+    font-size: 1.5rem;
+  }
+  .success-message-container .link-to-site {
+    text-decoration: none;
+    font-size: 1.5rem;
   }
 }
