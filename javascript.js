@@ -70,7 +70,7 @@ function checkFormSubmission(e) {
   if (correctInputCount === 4 && correctEmail === true) {
     successMessage.textContent = ` ${capitalizeFirstLetter(
       firstName.value
-    )}, you can know claim your free trial!`;
+    )}, you can now claim your free trial!`;
     successMessageContainer.classList.remove('hidden');
     form.classList.add('hidden');
     trialInfoContainer.classList.add('hidden');
